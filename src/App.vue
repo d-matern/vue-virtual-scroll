@@ -2,9 +2,11 @@
 import { computed, ref } from 'vue';
 import FixedVirtualScroll from './pages/FixedVirtualScroll.vue';
 import NotFound from './pages/NotFound.vue';
+import DynamicVirtualScroll from './pages/DynamicVirtualScroll.vue';
 
 const routes = {
   '/': FixedVirtualScroll,
+  '/dynamic': DynamicVirtualScroll,
 };
 const currentPath = ref(window.location.hash);
 
@@ -21,7 +23,10 @@ const currentView = computed(() => {
 <template>
   <h1>Vue Virtual Scroll</h1>
 
-  <nav><a href="#/">Скролл с фиксированной высотой</a></nav>
+  <nav>
+    <a href="#/">Скролл с фиксированной высотой</a> |
+    <a href="#/dynamic">Скролл с динамической высотой</a>
+  </nav>
 
   <component :is="currentView" />
 </template>
